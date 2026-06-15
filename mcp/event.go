@@ -64,7 +64,7 @@ func writeEvent(w io.Writer, evt Event) (int, error) {
 // apparent.
 func scanEvents(r io.Reader) iter.Seq2[Event, error] {
 	scanner := bufio.NewScanner(r)
-	const maxTokenSize = 1 * 1024 * 1024 // 1 MiB max line size
+	const maxTokenSize = 5 * 1024 * 1024 // 5 MiB max line size
 	scanner.Buffer(nil, maxTokenSize)
 
 	// TODO: investigate proper behavior when events are out of order, or have
